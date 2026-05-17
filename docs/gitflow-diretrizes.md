@@ -75,3 +75,28 @@ git branch -d feature/leitura-passagem
 
 Esta feature implementou o módulo de leitura e validação do código de
 barras/QR Code da passagem do passageiro no totem físico.
+
+---
+
+## 6. Ciclo de Vida de uma Release
+
+1. **Criar** `release/<versão>` a partir de `develop`
+2. **Bump** de versão em `package.json`, `index.js` e similares
+3. **Preparar** CHANGELOG e ajustes finais (sem novas features)
+4. **Merge** em `main` via `--no-ff`
+5. **Tag** semântica anotada na `main` (`git tag -a vX.Y.Z`)
+6. **Merge** de volta em `develop` para sincronizar alterações
+7. **Deletar** a branch de release
+
+### Exemplo — release/1.0.0
+
+```bash
+git checkout -b release/1.0.0 develop
+# bump versão, CHANGELOG...
+git checkout main
+git merge --no-ff release/1.0.0
+git tag -a v1.0.0 -m "Release v1.0.0"
+git checkout develop
+git merge --no-ff release/1.0.0
+git branch -d release/1.0.0
+```
