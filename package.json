@@ -1,0 +1,10 @@
+{
+  "name": "prettyflights-totem-checkin",
+  "version": "1.0.0-alpha",
+  "description": "Totem de Check-in PrettyFlights",
+  "main": "src/checkin/index.js",
+  "scripts": {
+    "start": "node src/checkin/index.js",
+    "test": "jest"
+  }
+}
